@@ -59,7 +59,34 @@
                 <h1 id="antrian" class="display-1 fw-bold text-success text-center lh-1 pb-2"></h1>
               </div>
               <!-- button pengambilan nomor antrian -->
-              <a id="insert" href="javascript:void(0)" class="btn btn-success btn-block rounded-pill fs-5 px-5 py-4 mb-2">
+              <!-- <style>
+    /* Gaya untuk mencetak */
+    @media print {
+
+      @page {
+            size: A7; /* Anda dapat mengganti nilai ini sesuai kebutuhan, misalnya 'letter', 'legal', atau nilai kustom seperti '210mm 297mm' */
+            margin: 5mm; /* Atur margin halaman, misalnya 20mm dari semua sisi */
+        }
+
+        /* Semua elemen di halaman akan disembunyikan */
+        body * {
+            visibility: hidden;
+        }
+        /* Hanya elemen dengan kelas print-section yang akan ditampilkan saat mencetak */
+        .print-section, .print-section * {
+            visibility: visible;
+        }
+        /* Menetapkan posisi absolut untuk elemen dengan kelas print-section */
+        .print-section {
+            position: absolute;
+            left: 0;
+            top: 0;
+        }
+    }
+</style> -->
+
+
+              <a id="insert" href="javascript:void(0)" onclick="window.print()" class="btn btn-success btn-block rounded-pill fs-5 px-5 py-4 mb-2">
                 <i class="bi-person-plus fs-4 me-2"></i> Ambil Nomor
               </a>
             </div>
