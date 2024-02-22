@@ -62,7 +62,39 @@
         </div>
       </div>
 
+      <label for="selectOption">Pilih Loket Pemanggil:</label>
+        <select id="selectOption">
+          <option value="loket 1">Loket 1</option>
+          <option value="loket 2">Loket 2</option>
+          <option value="loket 3">Loket 3</option>
+          <option value="loket 4">Loket 4</option>
+          <option value="loket 5">Loket 5</option>
+        </select>
+          <button onclick="ambilNilai()" class="btn btn-success rounded-pill px-4 py-2">Submit</button>
+          <p id="hasil"></p>
+
+        <script>
+        // function gunakanNilai(loket) {
+        //     // Contoh fungsi lain yang menggunakan nilai dari elemen select
+        //     alert("Anda memilih nilai: " + loket);
+        // }
+
+        // function ambilNilai() {
+        //     var select = document.getElementById("selectOption");
+        //     var loket = select.value;
+        //     gantikanNilai(loket); // Memanggil fungsi lain dengan nilai yang diambil dari elemen select
+        // }
+
+        function ambilNilai() {
+            var select = document.getElementById("selectOption");
+            var loket = select.value;
+            document.getElementById("hasil").innerHTML = "Loket yang dipilih: " +  loket;
+        }
+      </script>
+
       <div class="row">
+        
+
         <!-- menampilkan informasi jumlah antrian -->
         <div class="col-md-3 mb-4">
           <div class="card border-0 shadow-sm">
@@ -223,7 +255,7 @@
           },
         ],
         "order": [
-          [0, "desc"]             // urutkan data berdasarkan "no_antrian" secara descending
+          [0, "asc"]             // urutkan data berdasarkan "no_antrian" secara descending
         ],
         "iDisplayLength": 10,     // tampilkan 10 data per halaman
       });

@@ -59,36 +59,13 @@
                 <h1 id="antrian" class="display-1 fw-bold text-success text-center lh-1 pb-2"></h1>
               </div>
               <!-- button pengambilan nomor antrian -->
-              <!-- <style>
-    /* Gaya untuk mencetak */
-    @media print {
-
-      @page {
-            size: A7; /* Anda dapat mengganti nilai ini sesuai kebutuhan, misalnya 'letter', 'legal', atau nilai kustom seperti '210mm 297mm' */
-            margin: 5mm; /* Atur margin halaman, misalnya 20mm dari semua sisi */
-        }
-
-        /* Semua elemen di halaman akan disembunyikan */
-        body * {
-            visibility: hidden;
-        }
-        /* Hanya elemen dengan kelas print-section yang akan ditampilkan saat mencetak */
-        .print-section, .print-section * {
-            visibility: visible;
-        }
-        /* Menetapkan posisi absolut untuk elemen dengan kelas print-section */
-        .print-section {
-            position: absolute;
-            left: 0;
-            top: 0;
-        }
-    }
-</style> -->
-
-
-              <a id="insert" href="javascript:void(0)" onclick="window.print()" class="btn btn-success btn-block rounded-pill fs-5 px-5 py-4 mb-2">
+              
+              <a id="insert" href="javascript:void(0)" class="btn btn-success btn-block rounded-pill fs-5 px-5 py-4 mb-2">
                 <i class="bi-person-plus fs-4 me-2"></i> Ambil Nomor
               </a>
+
+              
+
             </div>
           </div>
         </div>
@@ -117,10 +94,28 @@
       // tampilkan jumlah antrian
       $('#antrian').load('get_antrian.php');
 
+      function pollQueue() {
+            // Panggil fungsi untuk mendapatkan jumlah antrian
+            $.ajax({
+                type: 'POST',                 // Mengirim data dengan metode POST
+                url: 'get_antrian.php',      // URL untuk mendapatkan jumlah antrian
+                success: function(response) { // Ketika proses mendapatkan jumlah antrian selesai
+                    // Tampilkan jumlah antrian
+                    $('#antrian').html(response).fadeIn('slow');
+                },
+                complete: function() {
+                    // Lakukan polling setiap 1 detik
+                    setTimeout(pollQueue, 100);
+                }
+            });
+        }
+
+        pollQueue();
+
       // proses insert data
       $('#insert').on('click', function() {
         $.ajax({
-          type: 'POST',                     // mengirim data dengan method POST
+          type: 'POST',                     // mengirim data dengan method POST 
           url: 'insert.php',                // url file proses insert data
           success: function(result) {       // ketika proses insert data selesai
             // jika berhasil
@@ -130,9 +125,18 @@
             }
           },
         });
+
       });
     });
   </script>
+
+  <!-- <script>
+        function printPage() {
+            window.print(); // Mencetak halaman tanpa menampilkan dialog cetak
+        }
+  </script> -->
+
+
 </body>
 
 </html>
