@@ -10,7 +10,7 @@ if (isset($_SERVER['HTTP_X_REQUESTED_WITH']) && ($_SERVER['HTTP_X_REQUESTED_WITH
 
   // membuat "no_antrian"
   // sql statement untuk menampilkan data "no_antrian" terakhir pada tabel "tbl_antrian" berdasarkan "tanggal"
-  $query = mysqli_query($mysqli, "SELECT max(no_antrian) as nomor FROM antrian_racik WHERE tanggal='$tanggal'")
+  $query = mysqli_query($mysqli, "SELECT max(no_antrian) as nomor FROM antrian_non_racik WHERE tanggal='$tanggal'")
                                   or die('Ada kesalahan pada query tampil data : ' . mysqli_error($mysqli));
   // ambil jumlah baris data hasil query
   $rows = mysqli_num_rows($query);
@@ -30,7 +30,7 @@ if (isset($_SERVER['HTTP_X_REQUESTED_WITH']) && ($_SERVER['HTTP_X_REQUESTED_WITH
   }
 
   // sql statement untuk insert data ke tabel "tbl_antrian"
-  $insert = mysqli_query($mysqli, "INSERT INTO antrian_racik(tanggal, no_antrian) 
+  $insert = mysqli_query($mysqli, "INSERT INTO antrian_non_racik(tanggal, no_antrian) 
                                    VALUES('$tanggal', '$no_antrian')")
                                    or die('Ada kesalahan pada query insert : ' . mysqli_error($mysqli));
   // cek query

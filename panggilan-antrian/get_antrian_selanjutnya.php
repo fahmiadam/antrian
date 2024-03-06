@@ -8,8 +8,8 @@ if (isset($_SERVER['HTTP_X_REQUESTED_WITH']) && ($_SERVER['HTTP_X_REQUESTED_WITH
   // ambil tanggal sekarang
   $tanggal = gmdate("Y-m-d", time() + 60 * 60 * 7);
 
-  // sql statement untuk menampilkan data "no_antrian" dari tabel "tbl_antrian" berdasarkan "tanggal" dan "status = 0"
-  $query = mysqli_query($mysqli, "SELECT no_antrian FROM tbl_antrian 
+  // sql statement untuk menampilkan data "no_antrian" dari tabel "antrian_racik" berdasarkan "tanggal" dan "status = 0"
+  $query = mysqli_query($mysqli, "SELECT no_antrian FROM antrian_racik 
                                   WHERE tanggal='$tanggal' AND status='0' 
                                   ORDER BY no_antrian ASC LIMIT 1")
                                   or die('Ada kesalahan pada query tampil data : ' . mysqli_error($mysqli));
